@@ -1,9 +1,13 @@
 # HTB Cap Walkthrough (Beginner Level)
 HTB Cap walkthrough with clear steps on enumeration, PCAP analysis, SSH access, and privilege escalation.
 
+## 🧪 Machine Information
+**Machine Name:** Cap   
 **Difficulty:** Easy  
 **Operating System:** Linux  
-**Skills Learned:** Nmap, IDOR, PCAP Analysis, FTP, SSH, Privilege Escalation  
+**Machine Link:** https://app.hackthebox.com/machines/Cap
+
+
 
 ---
 
@@ -65,7 +69,12 @@ The scan revealed 3 TCP ports open.
 
 
 ## 🌐 Web Enumeration
+
+![Dashboard](images/dashboard.png)
+
 After opening the HTTP service in the browser, I ran the Security Snapshot feature.
+
+![User Data](images/user_data.png)
 
 Once the scan completed, the application redirected me to a URL in the following format:
 
@@ -77,6 +86,8 @@ By manually changing the ID value in the URL, I was able to access scans belongi
 I downloaded PCAP files from different scan IDs and analyzed them using Wireshark.
 
 After inspecting multiple PCAP files, I discovered that user ID 0 contained sensitive information.
+
+![Packet Inspection](images/packet_inspection.png)
 
 The following FTP credentials were found in the PCAP traffic:
 ```bash
@@ -133,6 +144,9 @@ After running whoami, I confirmed that I had root access.
 
 ### Method 2: Binary Abuse (GTFOBins)
 I searched for binaries with special Linux capabilities using the following command:
+
+![Binaries](images/binaries.png)
+
 ```bash
 getcap -r / 2>/dev/null
 ```
@@ -167,5 +181,8 @@ Learned about credential reuse across services
 
 Practiced both automated and manual privilege escalation
 
+
+## Skills Learned:
+Nmap, IDOR, PCAP Analysis, FTP, SSH, Privilege Escalation  
 
 
